@@ -42,6 +42,23 @@ python src/train.py
 python -m src.score --input data/customers_sample.csv --output outputs/predictions.csv --model models/churn_pipeline.joblib --metadata models/metadata.json
 ```
 
+5. Ausführung der Analyse in einem Container
+
+**Docker-Image bauen**
+```bash
+docker build -t churn-sentinel .
+```
+
+**Scoring im Container starten**
+```bash
+docker run --rm churn-sentinel --input data/customers_sample.csv --output outputs/predictions.csv --model models/churn_pipeline.joblib --metadata models/metadata.json
+```
+
+**Volume erstellen, falls Ausgabedateien lokal betrachtet werden wollen**
+```bash
+docker run --rm -v $(pwd)/outputs:/app/outputs churn-sentinel --input data/customers_sample.csv --output outputs/predictions.csv --model models/churn_pipeline.joblib --metadata models/metadata.json
+```
+
 ---
 
 ## Hinweise
