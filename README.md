@@ -1,28 +1,28 @@
 # churn-sentinel
 
-**Kurz:** Dieses Projekt demonstriert, wie Unternehmen mit minimalem Code-Aufwand ein bestehendes Churn-Modell auf neue Kundendaten anwenden können. Es eignet sich sowohl für Prototyping als auch als Basis für produktive Batch-Scoring-Pipelines.
+**Kurz:**  
+Dieses Projekt demonstriert, wie Unternehmen mit minimalem Code-Aufwand ein bestehendes Churn-Modell auf neue Kundendaten anwenden können. Es eignet sich sowohl für schnelles Prototyping als auch als Basis für produktive Batch-Scoring-Pipelines.
 
 ## Ordnerstruktur
 
-churn-sentinel/
-├─ data/           # Beispiel-CSV-Dateien
-├─ models/         # gespeicherte Modelle + metadata.json
-├─ outputs/        # Ergebnisdateien mit Predictions
-├─ src/            # Quellcode: train.py, score.py, utils.py
-├─ tests/          # einfache Unit Tests
-├─ requirements.txt
-├─ Dockerfile
-└─ README.md
+churn-sentinel/  
+├─ data/           # Beispiel-CSV-Dateien mit Kundendaten  
+├─ models/         # Gespeicherte Modelle & Metadaten (z.B. churn_pipeline.joblib, metadata.json)  
+├─ outputs/        # Ergebnisdateien mit Predictions (z.B. predictions.csv)  
+├─ src/            # Quellcode: train.py (Modelltraining), score.py (Scoring), utils.py (Hilfsfunktionen)  
+├─ tests/          # Unit Tests für einzelne Funktionen  
+├─ requirements.txt  
+├─ Dockerfile  
+└─ README.md  
 
 ## Quickstart
 
-1. Klone / erstelle das Repo und wechsle in den Ordner:
+1. Repository klonen und ins Projektverzeichnis wechseln:  
 ```bash
 git clone git@github.com:sik84/churn-sentinel.git
 cd churn-sentinel
-```
 
-2. Virtuelle Umgebung & Abhängigkeiten
+2. Virtuelle Umgebung & Abhängigkeiten installieren:
 
 ```bash
 python -m venv .venv
@@ -36,13 +36,18 @@ pip install -r requirements.txt
 python src/train.py
 ```
 
-4. Beispiel-Input liegt in data/customers_sample.csv. Scoring:
+4. Mit dem trainierten Modell Scoring auf Beispiel-Daten ausführen (Ergebnis wird in outputs/predictions.csv geschrieben):
+
 ```bash
 python -m src.score --input data/customers_sample.csv --output outputs/predictions.csv --model models/churn_pipeline.joblib --metadata models/metadata.json
 ```
 
-5. Installation via Docker
-```bash
-docker build -t churn-sentinel .
-docker run --rm -v $(pwd)/data:/app/data -v $(pwd)/outputs:/app/outputs churn-sentinel
-```
+---
+
+## Hinweise
+
+Input-Daten: Die CSV-Dateien in data/ müssen dieselben Features enthalten, die im Modelltraining verwendet wurden.
+
+Metadaten: metadata.json enthält wichtige Infos, z.B. welche Spalten als Features genutzt werden und welcher Schwellenwert (threshold) für die Churn-Entscheidung gilt.
+
+Erweiterungen: Logging, Tests und eine benutzerfreundliche CLI sind bereits implementiert — so kannst du das Projekt einfach anpassen und produktiv nutzen.
