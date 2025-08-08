@@ -1,0 +1,28 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtuelle Umgebung
+.venv/
+venv/
+env/
+ENV/
+
+# Log-Dateien
+*.log
+
+# Ausgabeordner
+outputs/
+
+# Modelle & Metadaten (optional, je nach Use-Case)
+# models/
+
+# pytest cache
+.pytest_cache/
+
+# Editor / OS Dateien
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

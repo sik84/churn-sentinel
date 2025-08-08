@@ -1,0 +1,4 @@
+customer_id,tenure_months,monthly_charges,total_charges,contract_type,internet_service,payment_method,num_support_calls,has_paperless_billing
+CUST_000001,12,29.85,358.2,month-to-month,DSL,Electronic check,3,1
+CUST_000002,24,56.95,1366.8,one-year,Fiber optic,Credit card,1,0
+CUST_000003,5,70.7,353.5,month-to-month,Fiber optic,Bank transfer,5,1
